@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PiedraPapel</string>
+    <string name="text_escoge">Escoge una opción</string>
 </resources>
