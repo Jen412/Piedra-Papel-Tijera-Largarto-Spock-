@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    int cont=0, contPiedra=0, contPapel=0, contTijeras=0, contLagarto=0, contSpock=0, probPiedra=0, probPapel=0, probTijera=0, probLagarto=0, probSpock=0;
+    int cont=0, contPiedra=0, contPapel=0, contTijeras=0, contLagarto=0, contSpock=0;
+    float  probPiedra=0, probPapel=0, probTijera=0, probLagarto=0, probSpock=0;
     ImageButton btiPiedra, btiPapel, btiTijeras, btiLagarto, btiSpock;
     TextView tvGanador;
     Button btDenuevo;
@@ -172,11 +173,11 @@ public class MainActivity extends AppCompatActivity {
             }
             else{}
         }
-        probPiedra = contPiedra/cont*100;
-        probPapel = contPapel/cont*100;
-        probTijera = contTijeras/cont*100;
-        probLagarto = contLagarto/cont*100;
-        probSpock = contSpock/cont*100;
+        probPiedra = (float)contPiedra/cont*100;
+        probPapel = (float)contPapel/cont*100;
+        probTijera = (float)contTijeras/cont*100;
+        probLagarto = (float)contLagarto/cont*100;
+        probSpock = (float)contSpock/cont*100;
 
     System.out.println(probPiedra);
         if(probPiedra>=33) {
