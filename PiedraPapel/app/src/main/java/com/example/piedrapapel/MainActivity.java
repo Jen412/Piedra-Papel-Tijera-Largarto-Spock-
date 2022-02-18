@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    int cont=0, contPiedra=0, contPapel=0, contTijeras=0, contLagarto=0, contSpock=0;
+    int cont=0, contPiedra=0, contPapel=0, contTijeras=0, contLagarto=0, contSpock=0, probPiedra=0, probPapel=0, probTijera=0, probLagarto=0, probSpock=0;
     ImageButton btiPiedra, btiPapel, btiTijeras, btiLagarto, btiSpock;
     TextView tvGanador;
     Button btDenuevo;
@@ -172,7 +172,90 @@ public class MainActivity extends AppCompatActivity {
             }
             else{}
         }
-        
+        probPiedra = contPiedra/cont*100;
+        probPapel = contPapel/cont*100;
+        probTijera = contTijeras/cont*100;
+        probLagarto = contLagarto/cont*100;
+        probSpock = contSpock/cont*100;
+
+    System.out.println(probPiedra);
+        if(probPiedra>=33) {
+           ArrayList probTres = new ArrayList();
+           probTres.add("piedra");
+           Random ran = new Random();
+           int opcProb3 = ran.nextInt(2) + 0;
+           opc = "piedra";
+        }
+        else{
+            ArrayList probCinco = new ArrayList();
+            probCinco.add("piedra");
+            Random ran = new Random();
+            int opcProb5 = ran.nextInt(5) + 0;
+            opc = "piedra";
+        }
+
+        if(probPapel>=33) {
+            ArrayList probTres = new ArrayList();
+            probTres.add("papel");
+            Random ran = new Random();
+            int opcProb3 = ran.nextInt(2) + 0;
+            opc = "papel";
+
+        }
+        else{
+            ArrayList probCinco = new ArrayList();
+            probCinco.add("papel");
+            Random ran = new Random();
+            int opcProb5 = ran.nextInt(5) + 0;
+            opc = "papel";
+        }
+
+        if(probTijera>=33) {
+            ArrayList probTres = new ArrayList();
+            probTres.add("tijera");
+            Random ran = new Random();
+            int opcProb3 = ran.nextInt(2) + 0;
+            opc = "tijera";
+
+        }
+        else{
+            ArrayList probCinco = new ArrayList();
+            probCinco.add("tijera");
+            Random ran = new Random();
+            int opcProb5 = ran.nextInt(5) + 0;
+            opc = "tijera";
+        }
+
+        if(probLagarto>=33) {
+            ArrayList probTres = new ArrayList();
+            probTres.add("lagarto");
+            Random ran = new Random();
+            int opcProb3 = ran.nextInt(2) + 0;
+            opc = "lagarto";
+        }
+        else{
+            ArrayList probCinco = new ArrayList();
+            probCinco.add("lagarto");
+            Random ran = new Random();
+            int opcProb5 = ran.nextInt(5) + 0;
+            opc = "lagarto";
+        }
+
+        if(probSpock>=33) {
+            ArrayList probTres = new ArrayList();
+            probTres.add("spock");
+            Random ran = new Random();
+            int opcProb3 = ran.nextInt(2) + 0;
+            opc = "spock";
+        }
+        else{
+            ArrayList probCinco = new ArrayList();
+            probCinco.add("spock");
+            Random ran = new Random();
+            int opcProb5 = ran.nextInt(5) + 0;
+            opc = "spock";
+        }
+
         contSpock=0;
         contLagarto=0;
         contPiedra=0;
