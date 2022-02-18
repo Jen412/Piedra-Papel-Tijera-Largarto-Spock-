@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    //hola
     int cont=0, contPiedra=0, contPapel=0, contTijeras=0, contLagarto=0, contSpock=0;
     ImageButton btiPiedra, btiPapel, btiTijeras, btiLagarto, btiSpock;
     TextView tvGanador;
