@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String analisis() {
-        String opc="piedra";
+        String opc="";
         for (int i = 0; i < jugadas.size(); i++) {
             String op=(String)jugadas.get(i);
             if (jugadas.get(i).equals("piedra")){
@@ -172,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{}
         }
+        
         contSpock=0;
         contLagarto=0;
         contPiedra=0;
