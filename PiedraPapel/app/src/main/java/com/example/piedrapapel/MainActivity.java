@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class MainActivity extends AppCompatActivity {
     int cont=0, contPiedra=0, contPapel=0, contTijeras=0, contLagarto=0, contSpock=0;
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void jugar(){
         String[]  opciones= {"piedra", "papel", "tijeras", "lagarto", "spock"};
         String opcion="";
-        if (cont<3){
+        if (cont<8){
             Random ran = new Random();
             int opc = ran.nextInt(5) + 0;
             System.out.println(opc);
@@ -179,84 +182,39 @@ public class MainActivity extends AppCompatActivity {
         probLagarto = (float)contLagarto/cont*100;
         probSpock = (float)contSpock/cont*100;
 
-    System.out.println(probPiedra);
-        if(probPiedra>=33) {
-           ArrayList probTres = new ArrayList();
-           probTres.add("piedra");
-           Random ran = new Random();
-           int opcProb3 = ran.nextInt(2) + 0;
-           opc = "piedra";
-        }
-        else{
-            ArrayList probCinco = new ArrayList();
-            probCinco.add("piedra");
-            Random ran = new Random();
-            int opcProb5 = ran.nextInt(5) + 0;
-            opc = "piedra";
+    //System.out.println(probPiedra);
+        ArrayList probCinco = new ArrayList();
+        probCinco.add("piedra");
+        probCinco.add("papel");
+        probCinco.add("tijeras");
+        probCinco.add("lagarto");
+        probCinco.add("spock");
+        ArrayList probTres = new ArrayList();
+        Random ran = new Random();
+        int opcProb5 = ran.nextInt(5) + 0;
+        int opcProb3 = ran.nextInt(2) + 0;
+        if (probTijera==probPapel&& probPapel==probPiedra&&probPiedra==probLagarto&& probLagarto==probSpock){
+            opc =(String) probCinco.get(opcProb5);
+        }else{
+            Hashtable<Float,String> prob = new Hashtable<Float,String>();
+            prob.put(probPiedra,"piedra");
+            prob.put(probPapel,"papel");
+            prob.put(probTijera,"tijeras" );
+            prob.put(probLagarto,"lagarto");
+            prob.put(probSpock,"spock");
+            prob = ordenarHash(prob);
+            Set<Float> keys = prob.keySet();
+            Iterator<Float> itr = keys.iterator();
+            for (int i = 0; i <2; i++) {
+                Float f = itr.next();
+                probTres.add(prob.get(f));
+                //System.out.println(f+" "+ prob.get(f));
+            }
+
+            opc = (String) probTres.get(opcProb3);
         }
 
-        if(probPapel>=33) {
-            ArrayList probTres = new ArrayList();
-            probTres.add("papel");
-            Random ran = new Random();
-            int opcProb3 = ran.nextInt(2) + 0;
-            opc = "papel";
-
-        }
-        else{
-            ArrayList probCinco = new ArrayList();
-            probCinco.add("papel");
-            Random ran = new Random();
-            int opcProb5 = ran.nextInt(5) + 0;
-            opc = "papel";
-        }
-
-        if(probTijera>=33) {
-            ArrayList probTres = new ArrayList();
-            probTres.add("tijera");
-            Random ran = new Random();
-            int opcProb3 = ran.nextInt(2) + 0;
-            opc = "tijera";
-
-        }
-        else{
-            ArrayList probCinco = new ArrayList();
-            probCinco.add("tijera");
-            Random ran = new Random();
-            int opcProb5 = ran.nextInt(5) + 0;
-            opc = "tijera";
-        }
-
-        if(probLagarto>=33) {
-            ArrayList probTres = new ArrayList();
-            probTres.add("lagarto");
-            Random ran = new Random();
-            int opcProb3 = ran.nextInt(2) + 0;
-            opc = "lagarto";
-        }
-        else{
-            ArrayList probCinco = new ArrayList();
-            probCinco.add("lagarto");
-            Random ran = new Random();
-            int opcProb5 = ran.nextInt(5) + 0;
-            opc = "lagarto";
-        }
-
-        if(probSpock>=33) {
-            ArrayList probTres = new ArrayList();
-            probTres.add("spock");
-            Random ran = new Random();
-            int opcProb3 = ran.nextInt(2) + 0;
-            opc = "spock";
-        }
-        else{
-            ArrayList probCinco = new ArrayList();
-            probCinco.add("spock");
-            Random ran = new Random();
-            int opcProb5 = ran.nextInt(5) + 0;
-            opc = "spock";
-        }
-
+        System.out.println(opc);
         contSpock=0;
         contLagarto=0;
         contPiedra=0;
@@ -387,5 +345,23 @@ public class MainActivity extends AppCompatActivity {
         else {
             tvGanador.setText("Empate");
         }
+    }
+
+    public Hashtable ordenarHash(Hashtable h){
+        Hashtable<Float,String> hr = new Hashtable<Float, String>();
+        TreeMap<Float, String> tm
+                = new TreeMap<Float, String>(h);
+
+        // create a keyset
+        Set<Float> keys = tm.keySet();
+        Iterator<Float> itr = keys.iterator();
+
+        // traverse the TreeMap using iterator
+        while (itr.hasNext()) {
+            Float i = itr.next();
+            hr.put(i,(String)h.get(i));
+            System.out.println(i + " " + tm.get(i));
+        }
+        return hr;
     }
 }
