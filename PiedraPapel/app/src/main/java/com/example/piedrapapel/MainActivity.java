@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void jugar(){
         String[]  opciones= {"piedra", "papel", "tijeras", "lagarto", "spock"};
         String opcion="";
-        if (cont<8){
+        if (cont<5){
             Random ran = new Random();
             int opc = ran.nextInt(5) + 0;
             System.out.println(opc);
